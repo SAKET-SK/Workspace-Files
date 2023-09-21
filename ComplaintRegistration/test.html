@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dropdowns</title>
+</head>
+<body>
+    <h2>State and City Dropdowns</h2>
+    <label for="state">Select State:</label>
+    <select id="state" onchange="populateCities()">
+        <option value="Andhra Pradesh">Andhra Pradesh</option>
+        <option value="Telangana">Telangana</option>
+        <!-- Add more states as needed -->
+    </select>
+
+    <br>
+
+    <label for="city">Select City:</label>
+    <select id="city">
+        <!-- Cities will be populated dynamically using JavaScript -->
+    </select>
+
+    <h2>Ticket Category and Call Type Dropdowns</h2>
+    <label for="ticketCategory">Ticket Category:</label>
+    <select id="ticketCategory" onchange="populateCallType()">
+        <option value="Complaint Call">Complaint Call</option>
+        <option value="Demo Call">Demo Call</option>
+        <option value="Installation Call">Installation Call</option>
+    </select>
+
+    <br>
+
+    <label for="callType">Call Type:</label>
+    <select id="callType">
+        <!-- Options will be populated dynamically using JavaScript -->
+    </select>
+
+    <script>
+        function populateCities() {
+            var stateDropdown = document.getElementById("state");
+            var cityDropdown = document.getElementById("city");
+            var selectedState = stateDropdown.value;
+
+            // Clear previous options
+            cityDropdown.innerHTML = "";
+
+            // Define city options based on the selected state
+            var cityOptions = {};
+
+            // Add cities for each state (you can extend this list)
+            cityOptions["Andhra Pradesh"] = ["Hyderabad", "Visakhapatnam", "Vijayawada"];
+            cityOptions["Telangana"] = ["Hyderabad", "Warangal", "Karimnagar"];
+
+            // Populate city options based on the selected state
+            var cities = cityOptions[selectedState];
+            if (cities) {
+                for (var i = 0; i < cities.length; i++) {
+                    var cityOption = document.createElement("option");
+                    cityOption.text = cities[i];
+                    cityDropdown.add(cityOption);
+                }
+            }
+        }
+
+        function populateCallType() {
+            var ticketCategoryDropdown = document.getElementById("ticketCategory");
+            var callTypeDropdown = document.getElementById("callType");
+            var selectedCategory = ticketCategoryDropdown.value;
+
+            // Clear previous options
+            callTypeDropdown.innerHTML = "";
+
+            if (selectedCategory === "Complaint Call") {
+                // Populate options for Complaint Call
+                var outOfWarrantyOption = document.createElement("option");
+                outOfWarrantyOption.text = "Out of Warranty";
+                callTypeDropdown.add(outOfWarrantyOption);
+
+                var underWarrantyOption = document.createElement("option");
+                underWarrantyOption.text = "Under Warranty";
+                callTypeDropdown.add(underWarrantyOption);
+            } else if (selectedCategory === "Demo Call") {
+                // Populate options for Demo Call
+                var demoCallOption = document.createElement("option");
+                demoCallOption.text = "Demo Call";
+                callTypeDropdown.add(demoCallOption);
+            } else if (selectedCategory === "Installation Call") {
+                // Populate options for Installation Call
+                var installationCallOption = document.createElement("option");
+                installationCallOption.text = "Installation Call";
+                callTypeDropdown.add(installationCallOption);
+            }
+        }
+
+        // Initialize both dropdowns based on the default selections
+        populateCities();
+        populateCallType();
+    </script>
+</body>
+</html>
+
+
+
+

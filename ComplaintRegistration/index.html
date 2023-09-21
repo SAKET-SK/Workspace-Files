@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- <script src="callType.js"></script> -->
+  
+    <title>Complaint Registration Form</title>
+</head>
+<body>
+    <div style="border: 1px solid black; margin:30px; padding:5px; width: 900px">
+        <h1 style="display: flex; justify-content: center;">Complaint Registration Form</h1>
+        <br/>
+        <b><span style="margin: 20px; border-bottom: 4px solid lightslategray; width:30%">Personal Information</span></b>
+        <span style="display:flex; justify-content:end; margin:5px">Fields marked with <span style="color:red;margin:3px">*</span> are mandatory</span>
+        <br/>
+        <div class="mb-3 row">
+            <label for="customerName" class="col-sm-2 col-form-label">Customer Name<span style="color:red;margin:3px">*</span></label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="customerName" required>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="stateSelect" class="col-sm-2 col-form-label">Select State <span style="color:red;margin:3px">*</span></label>
+            <div class="col-sm-10">
+                <select id="stateSelect" onchange="populateCities()" style="width:300px;" required>
+                    <option selected disabled="disabled">Select State</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
+                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                    <option value="Lakshadweep">Lakshadweep</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Puducherry">Puducherry</option>
+                </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="citySelect" class="col-sm-2 col-form-label">Select City <span style="color:red;margin:3px">*</span></label>
+            <div class="col-sm-10">
+                <select id="citySelect" style="width:300px;" required>
+                    
+                </select>
+            </div>
+          </div>
+
+        <div class="mb-3 row">
+            <label for="addressline1" class="col-sm-2 col-form-label">Address Line 1 <span style="color:red;margin:3px">*</span></label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="addressline1" required>
+            </div>
+        </div>
+        
+        <div class="mb-3 row">
+            <label for="addressline2" class="col-sm-2 col-form-label">Address Line 2</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="addressline2">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="addressline3" class="col-sm-2 col-form-label">Address Line 3</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="addressline3">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="addressline4" class="col-sm-2 col-form-label">Address Line 4</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="addressline4">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="pincode" class="col-sm-2 col-form-label">Pincode <span style="color:red;margin:3px">*</span></label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="pincode" required>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="mobile_no" class="col-sm-2 col-form-label">Mobile Number <span style="color:red;margin:3px">*</span></label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="mobile_no" required>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="email" class="col-sm-2 col-form-label">Email <span style="color:red;margin:3px">*</span></label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="email" required>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="ticketCategory" class="col-sm-2 col-form-label">Ticket Category<span style="color:red;margin:3px">*</span></label>
+            <div class="col-sm-10">
+                <select id="ticketCategory" onchange="populateCallType()" style="width:300px;" required>
+                    <option selected disabled="disabled">Select Ticket...</option>
+                    <option value="Complaint Call">Complaint Call</option>
+                    <option value="Demo Call">Demo Call</option>
+                    <option value="Installation Call">Installation Call</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="calltype" class="col-sm-2 col-form-label">Call Type <span style="color:red;margin:3px">*</span></label>
+            <div class="col-sm-10">
+                <select id="calltype" style="width:300px;" required>
+                    
+                </select>
+            </div>
+        </div>
+
+        <b><span style="margin: 20px; border-bottom: 4px solid lightslategray; width:30%">Product Information</span></b>
+        <span style="display:flex; justify-content:end; margin:5px"></span>
+        <br/>
+        <div class="mb-3 row">
+            <label for="productCategory" class="col-sm-2 col-form-label">Product Category<span style="color:red;margin:3px">*</span></label>
+            <div class="col-sm-10">
+                <select id="productCategory" style="width:300px;" required>
+                    <option value="Chopper and HBS">Chopper and HBS</option>
+                </select>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="productName" class="col-sm-2 col-form-label">Product Name<span style="color:red;margin:3px">*</span></label>
+            <div class="col-sm-10">
+                <select id="productName" style="width:300px;" required>
+                    <option selected disbaled="disabled">Select a Product</option>
+                </select>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="productName" class="col-sm-2 col-form-label">Select Problem<span style="color:red;margin:3px">*</span></label>
+            <div class="col-sm-10">
+                <select id="productName" style="width:300px;" required>
+                    <option selected disbaled="disabled">Select Problem</option>
+                </select>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="productImage" class="col-sm-2 col-form-label">Product Image</label>
+            <div class="col-sm-10">
+              <input type="file" class="form-control" id="productImage">
+              <span style="margin-right: 5px; color: lightslategray">Only jpg/jpeg/pdf format</span>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="invoiceCopy" class="col-sm-2 col-form-label">Invoice/Bill Copy</label>
+            <div class="col-sm-10">
+              <input type="file" class="form-control" id="invoiceCopy">
+              <span style="margin-right: 5px; color: lightslategray">Only jpg/jpeg/pdf format</span>
+            </div>
+        </div>
+
+        <div class="container" style="display: grid;">
+            <button type="submit" style="margin: auto;
+            background-image: linear-gradient(#f7f8fa ,#e7e9ec);
+            border-color: #adb1b8 #a2a6ac #8d9096;
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 3px;
+            box-shadow: rgba(255,255,255,.6) 0 1px 0 inset;
+            box-sizing: border-box;
+            color: #0f1111;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 25px;
+            height: 40px;
+            font-size: 20px;
+            outline: 0;
+            overflow: hidden;
+            padding: 0 11px;
+            text-align: center;
+            text-decoration: none;
+            text-overflow: ellipsis;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;">Submit</button>
+        </div>
+</div>
+    <script>
+        const citiesData = {
+            "Andhra Pradesh": ["Hyderabad", "Visakhapatnam", "Vijayawada", "Guntur", "Nellore", "Kurnool", "Rajahmundry", "Tirupati", "Anantapur", "Vizianagaram", "Eluru", "Ongole", "Kadapa (Cuddapah)", "Machilipatnam", "Tenali", "Proddatur", "Chittoor", "Bhimavaram", "Nandyal", "Adoni"],
+            "Arunachal Pradesh": ["Itanagar", "Naharlagun", "Tawang", "Pasighat", "Roing", "Tezu", "Ziro", "Bomdila", "Aalo", "Along", "Daporijo", "Khonsa", "Namsai", "Anini", "Yingkiong"],
+            "Assam": ["Guwahati", "Dibrugarh", "Silchar", "Jorhat", "Nagaon", "Tinsukia", "Tezpur", "Bongaigaon", "Dhubri", "Sibsagar", "Goalpara", "Barpeta", "Karimganj", "Hailakandi", "North Lakhimpur", "Diphu", "Dhemaji", "Nalbari", "Morigaon", "Kokrajhar", "Lanka", "Rangia", "Golaghat", "Hojo", "Dhakuakhana", "Lakhipur", "Tihu", "Chapar", "Bilasipara", "Hojai", "Raha", "Kharupatia", "Sarupathar", "Gossaigaon", "Sualkuchi", "Pathsala", "Sapatgram", "Dispur"],
+            "Bihar": ["Ara", "Araria", "Arrah", "Aurangabad", "Bagaha", "Begusarai", "Bettiah", "Bhagalpur", "Bihar Sharif", "Buxar", "Chapra", "Darbhanga", "Dehri", "Dinapur Nizamat", "Gaya", "Hajipur", "Jamalpur", "Jamui", "Katihar", "Kishanganj", "Madhubani", "Motihari", "Munger", "Muzaffarpur", "Nawada", "Patna", "Purnia", "Saharsa", "Samastipur", "Sasaram", "Sitamarhi", "Siwan"],
+            "Chhattisgarh": ["Ambikapur", "Bhilai", "Bilaspur", "Chirmiri", "Dhamtari", "Durg", "Jagdalpur", "Korba", "Mahasamund", "Raigarh", "Raipur"],
+            "Goa": ["Madgaon", "Panaji", "Mormugao", "Mapusa", "Ponda", "Margao", "Vasco da Gama", "Curchorem", "Sanquelim", "Bicholim", "Cuncolim", "Valpoi", "Cortalim", "Sanguem", "Quepem", "Cuncolim"],
+            "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar", "Junagadh", "Gandhinagar", "Nadiad", "Anand", "Mehsana", "Bharuch", "Navsari", "Valsad", "Vapi", "Morbi", "Surendranagar", "Gandhidham", "Veraval", "Gandhinagar"],
+            "Haryana": ["Ambala", "Yamunanagar", "Hisar", "Karnal", "Panipat", "Rohtak", "Sonipat", "Panchkula", "Bhiwani", "Sirsa", "Jind", "Thanesar", "Kaithal", "Rewari", "Palwal", "Fatehabad", "Kurukshetra", "Jhajjar", "Narnaul", "Mahendragarh"],
+            "Himachal Pradesh": ["Shimla", "Mandi", "Solan", "Dharamshala", "Baddi", "Nahan", "Una", "Chamba", "Hamirpur", "Bilaspur", "Kullu", "Sundernagar", "Palampur", "Kangra", "Nurpur", "Mandi", "Dalhousie", "Kasauli", "Sarkaghat", "Joginder Nagar"],
+            "Jharkhand": ["Ranchi", "Jamshedpur", "Dhanbad", "Bokaro Steel City", "Hazaribagh", "Deoghar", "Giridih", "Dumka", "Phusro", "Medininagar (Daltonganj)", "Chirkunda", "Hazaribagh", "Ramgarh", "Jhumri Tilaiya", "Sahibganj", "Bhagalpur", "Godda", "Koderma", "Simdega", "Gumla"],
+            "Karnataka": ["Bangalore", "Hubli-Dharwad", "Mysore", "Gulbarga", "Mangalore", "Belgaum", "Davanagere", "Bellary", "Shimoga", "Tumkur", "Raichur", "Bidar", "Hospet", "Hassan", "Gadag-Betageri", "Bhadravati", "Haveri", "Chitradurga", "Robertson Pet", "Mandya"],
+            "Kerala": ["Thiruvananthapuram", "Kochi (Cochin)", "Kozhikode (Calicut)", "Kollam", "Thrissur", "Kannur", "Kottayam", "Alappuzha", "Palakkad", "Malappuram", "Pathanamthitta", "Idukki", "Wayanad"],
+            "Madhya Pradesh": ["Bhopal", "Indore", "Jabalpur", "Gwalior", "Ujjain", "Sagar", "Dewas", "Satna", "Ratlam", "Rewa", "Murwara (Katni)", "Singrauli", "Burhanpur", "Khandwa", "Morena", "Bhind", "Chhindwara", "Guna", "Shivpuri", "Vidisha"],
+            "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Thane", "Nashik", "Aurangabad", "Solapur", "Amravati", "Navi Mumbai", "Kolhapur", "Akola", "Panvel", "Ulhasnagar", "Sangli", "Jalgaon", "Malegaon", "Dhule", "Ahmednagar", "Ichalkaranji", "Chandrapur"],
+            "Manipur": ["Imphal", "Thoubal", "Bishnupur", "Churachandpur", "Kakching", "Senapati", "Ukhrul", "Lilong", "Mayang Imphal", "Tamenglong", "Nambol", "Yairipok", "Kumbi", "Kangpokpi", "Kwakta", "Wangoi", "Kakching Khunou", "Moirang", "Jiribam", "Lamai"],
+            "Meghalaya": ["Shillong", "Tura", "Nongstoin", "Jowai", "Baghmara", "Williamnagar", "Nongpoh", "Resubelpara", "Mairang", "Khliehriat", "Amlarem", "Nongstoin"],
+            "Mizoram": ["Aizawl", "Lunglei", "Saiha", "Champhai", "Kolasib", "Serchhip", "Lawngtlai", "Mamit", "Saitual", "Khawzawl"],
+            "Nagaland": ["Kohima", "Dimapur", "Mokokchung", "Tuensang", "Wokha", "Mon", "Phek", "Zunheboto", "Kiphire", "Longleng"],
+            "Odisha": ["Bhubaneswar", "Cuttack", "Rourkela", "Brahmapur", "Sambalpur", "Puri", "Balasore", "Bhadrak", "Baripada", "Jharsuguda", "Jeypore", "Bargarh", "Rayagada", "Bhawanipatna", "Balangir", "Kendrapara", "Paradip", "Jajpur", "Phulabani", "Dhenkanal"],
+            "Punjab": ["Amritsar", "Ludhiana", "Jalandhar", "Patiala", "Bathinda", "Hoshiarpur", "Mohali", "Batala", "Pathankot", "Moga", "Abohar", "Rajpura", "Firozpur", "Kapurthala", "Khanna", "Malerkotla", "Barnala", "Fatehgarh Sahib", "Gurdaspur", "Sangrur"],
+            "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Bikaner", "Ajmer", "Bhilwara", "Alwar", "Bharatpur", "Sikar", "Pali", "Sri Ganganagar", "Hanumangarh", "Churu", "Jhunjhunu", "Kishangarh", "Barmer", "Nagaur", "Tonk", "Bhilwara"],
+            "Sikkim": ["Gangtok", "Namchi", "Rangpo", "Mangan", "Singtam", "Gyalshing", "Soreng", "Ravangla", "Sikkim"],
+            "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Tiruppur", "Salem", "Erode", "Vellore", "Tirunelveli", "Thoothukudi", "Nagercoil", "Thanjavur", "Dindigul", "Cuddalore", "Kancheepuram", "Tiruvannamalai", "Hosur", "Neyveli", "Karur", "Pollachi"],
+            "Telangana": ["Hyderabad", "Warangal", "Nizamabad", "Khammam", "Karimnagar", "Ramagundam", "Mahbubnagar", "Nalgonda", "Adilabad", "Suryapet", "Miryalaguda", "Jagtial", "Nirmal", "Kollapur", "Kothagudem", "Siddipet", "Sangareddy", "Bhongir", "Wanaparthy", "Vikarabad"],
+            "Tripura": ["Agartala", "Udaipur", "Dharmanagar", "Kailasahar", "Ambassa", "Pratapgarh", "Belonia", "Sonamura", "Khowai", "Bishramganj", "Melaghar", "Teliamura", "Santirbazar", "Sabhagachhi", "Amarpur", "Kamalpur", "Birganj", "Mohanpur", "Baxanagar", "Jirania"],
+            "Uttar Pradesh": ["Lucknow", "Kanpur", "Ghaziabad", "Varanasi", "Allahabad", "Agra", "Meerut", "Noida", "Bareilly", "Aligarh", "Moradabad", "Saharanpur", "Gorakhpur", "Jhansi", "Muzaffarnagar", "Mathura", "Firozabad", "Rampur", "Shahjahanpur", "Faizabad"],
+            "Uttarakhand": ["Dehradun", "Haridwar", "Rishikesh", "Haldwani", "Nainital", "Kashipur", "Rudrapur", "Roorkee", "Kathgodam", "Ramnagar", "Pithoragarh", "Bageshwar", "Almora", "Mussoorie", "Tehri", "Pauri", "Ranikhet", "Champawat", "Chamoli", "Srinagar"],
+            "West Bengal": ["Kolkata", "Howrah", "Durgapur", "Asansol", "Siliguri", "Maheshtala", "Rajpur Sonarpur", "Panihati", "Kharagpur", "Haldia", "Bardhaman", "Krishnanagar", "English Bazar", "Baharampur", "Medinipur", "Serampore", "Bally", "Ranaghat", "Jalpaiguri", "Habra"],
+            "Andaman and Nicobar Islands": ["Port Blair", "Car Nicobar", "Mayabunder", "Bamboo Flat", "Garacharma", "Nancowry", "Rangat", "Ferrargunj", "Hut Bay", "Diglipur", "Kavaratti", "Kadmat", "Kalapeni", "Minicoy", "Amini", "Bombooflat", "Campbell Bay", "Malappuram", "Port Blair", "Port Blair"],
+            "Chandigarh": ["Chandigarh"],
+            "Dadra and Nagar Haveli and Daman and Diu": ["Daman", "Silvassa"],
+            "Lakshadweep": ["Kavaratti", "Minicoy", "Andrott", "Agatti", "Amini", "Bitra", "Chetlat", "Kadmat", "Kalpenny", "Kilthan", "Pitti", "Suheli Par", "Thiladhunmathi", "Thiladhunmathi", "Thiladhunmathi"],
+            "Delhi": ["New Delhi", "North Delhi", "South Delhi", "East Delhi", "West Delhi", "Central Delhi", "North West Delhi", "North East Delhi", "South West Delhi", "South East Delhi"],
+            "Puducherry": ["Puducherry (Pondicherry)", "Karaikal", "Mahe", "Yanam"]
+        };
+
+        // Function to populate the city dropdown based on the selected state
+        function populateCities() {
+            const stateSelect = document.getElementById("stateSelect");
+            const citySelect = document.getElementById("citySelect");
+            const selectedState = stateSelect.options[stateSelect.selectedIndex].value;
+            // Clear previous city options
+            citySelect.innerHTML = "";
+
+            if (citiesData[selectedState]) {
+                citiesData[selectedState].forEach(city => {
+                    const option = document.createElement("option");
+                    option.value = city;
+                    option.textContent = city;
+                    citySelect.appendChild(option);
+                });
+            } else {
+                const option = document.createElement("option");
+                option.textContent = "...";
+                citySelect.appendChild(option);
+            }
+        }
+        // Initial population of cities based on the default selected state
+        // populateCities();
+
+        
+
+        // populateCallType();
+    </script>
+    <script>
+        const callData = {
+            "Complaint Call": ["Out of Warranty", "Under Warranty"],
+            "Demo Call": ["Demo Call"],
+            "Installation Call": ["Installation Call"]
+        }
+
+        function populateCallType() {
+            const ticketCategoryDropdown = document.getElementById("ticketCategory");
+            const callTypeDropdown = document.getElementById("calltype");
+            const selectedCategory = ticketCategoryDropdown.options[ticketCategoryDropdown.selectedIndex].value;
+
+            // Clear previous options
+            callTypeDropdown.innerHTML = "";
+
+            if(callData[selectedCategory]){
+                callData[selectedCategory].forEach(callquery => {
+                    const calloption = document.createElement("option");
+                    calloption.value = callquery;
+                    calloption.textContent = callquery;
+                    callTypeDropdown.appendChild(calloption);
+                })
+            }
+            else{
+                const calloption = document.createElement("option");
+                calloption.textContent = "...";
+                callTypeDropdown.appendChild(calloption);
+            }
+
+            // if (selectedCategory === "Complaint Call") {
+            //     // Populate options for Complaint Call
+            //     // debugger;
+            //     var outOfWarrantyOption = document.createElement("option");
+            //     outOfWarrantyOption.textContent = "Out of Warranty";
+            //     outOfWarrantyOption.value = "Out of Warranty";
+            //     callTypeDropdown.appendChild(outOfWarrantyOption);
+
+            //     var underWarrantyOption = document.createElement("option");
+            //     underWarrantyOption.textContent = "Under Warranty";
+            //     underWarrantyOption.value = "Under Warranty";
+            //     callTypeDropdown.appendChild(underWarrantyOption);
+            // } else if (selectedCategory === "Demo Call") {
+            //     // Populate options for Demo Call
+            //     var demoCallOption = document.createElement("option");
+            //     demoCallOption.text = "Demo Call";
+            //     callTypeDropdown.add(demoCallOption);
+            // } else if (selectedCategory === "Installation Call") {
+            //     // Populate options for Installation Call
+            //     var installationCallOption = document.createElement("option");
+            //     installationCallOption.text = "Installation Call";
+            //     callTypeDropdown.add(installationCallOption);
+            // }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
