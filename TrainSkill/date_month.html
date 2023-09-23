@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Year and Month Selector</title>
+</head>
+<body>
+    <h1>Select Current Year and Month, and Last Two Years</h1>
+    <form>
+        <label for="currentYear">Current Year and Month:</label>
+        <input type="month" id="currentYear" name="currentYear" required>
+
+        <label for="lastTwoYears">Last Two Years:</label>
+        <select id="lastTwoYears" name="lastTwoYears" required>
+            <script>
+                var currentYear = new Date().getFullYear();
+                for (var year = currentYear; year >= currentYear - 2; year--) {
+                    document.write("<option value='" + year + "'>" + year + "</option>");
+                }
+            </script>
+        </select>
+
+        <input type="button" value="Submit" onclick="getSelectedValues()">
+    </form>
+
+    <script>
+        function getSelectedValues() {
+            var currentYear = document.getElementById("currentYear").value;
+            var lastTwoYears = document.getElementById("lastTwoYears").value;
+            
+            alert("Selected Current Year and Month: " + currentYear + "\nSelected Last Two Years: " + lastTwoYears);
+        }
+    </script>
+</body>
+</html>

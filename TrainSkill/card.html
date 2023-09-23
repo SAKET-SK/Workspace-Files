@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiple Video Cards</title>
+</head>
+<body>
+  <div class="video-card" id="videoCard1" style="position: relative; width: 300px; border: 1px solid #ccc; margin: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); text-align: center; display: none;">
+    <h2>Video 1</h2>
+    <iframe width="260" height="140" src="https://www.youtube.com/embed/6JLwdoL7_xg?autoplay=0" frameborder="0" allowfullscreen></iframe>
+    <button class="nav-button prev-button" style="display: inline-block; margin: 10px; padding: 5px; font-size: 20px; cursor: pointer; background: rgba(255, 255, 255, 0.8); border: none; outline: none;">&#8249;</button>
+    <button class="nav-button next-button" style="display: inline-block; margin: 10px; padding: 5px; font-size: 20px; cursor: pointer; background: rgba(255, 255, 255, 0.8); border: none; outline: none;">&#8250;</button>
+  </div>
+
+  <div class="video-card" id="videoCard2" style="position: relative; width: 300px; border: 1px solid #ccc; margin: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); text-align: center; display: none;">
+    <h2>Video 2</h2>
+    <iframe width="260" height="140" src="https://www.youtube.com/embed/Bc8psyVkjIk?autoplay=0" frameborder="0" allowfullscreen></iframe>
+    <button class="nav-button prev-button" style="display: inline-block; margin: 10px; padding: 5px; font-size: 20px; cursor: pointer; background: rgba(255, 255, 255, 0.8); border: none; outline: none;">&#8249;</button>
+    <button class="nav-button next-button" style="display: inline-block; margin: 10px; padding: 5px; font-size: 20px; cursor: pointer; background: rgba(255, 255, 255, 0.8); border: none; outline: none;">&#8250;</button>
+  </div>
+
+  <div class="video-card" id="videoCard3" style="position: relative; width: 300px; border: 1px solid #ccc; margin: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); text-align: center; display: none;">
+    <h2>Video 3</h2>
+    <iframe width="260" height="140" src="https://www.youtube.com/embed/M13owPRhYbE?autoplay=0" frameborder="0" allowfullscreen></iframe>
+    <button class="nav-button prev-button" style="display: inline-block; margin: 10px; padding: 5px; font-size: 20px; cursor: pointer; background: rgba(255, 255, 255, 0.8); border: none; outline: none;">&#8249;</button>
+    <button class="nav-button next-button" style="display: inline-block; margin: 10px; padding: 5px; font-size: 20px; cursor: pointer; background: rgba(255, 255, 255, 0.8); border: none; outline: none;">&#8250;</button>
+  </div>
+
+  <script>
+    const videoCards = document.querySelectorAll('.video-card');
+    let currentIndex = 0;
+
+    function showNextCard() {
+      videoCards[currentIndex].style.display = 'none';
+      currentIndex = (currentIndex + 1) % videoCards.length;
+      videoCards[currentIndex].style.display = 'block';
+    }
+
+    function showPrevCard() {
+      videoCards[currentIndex].style.display = 'none';
+      currentIndex = (currentIndex - 1 + videoCards.length) % videoCards.length;
+      videoCards[currentIndex].style.display = 'block';
+    }
+
+    function showCard(index) {
+      videoCards[currentIndex].style.display = 'none';
+      currentIndex = index;
+      videoCards[currentIndex].style.display = 'block';
+    }
+
+    const prevButtons = document.querySelectorAll('.prev-button');
+    prevButtons.forEach(button => {
+      button.addEventListener('click', showPrevCard);
+    });
+
+    const nextButtons = document.querySelectorAll('.next-button');
+    nextButtons.forEach(button => {
+      button.addEventListener('click', showNextCard);
+    });
+
+    setInterval(showNextCard, 5000);
+  </script>
+</body>
+</html>

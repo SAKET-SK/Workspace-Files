@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Constraints</title>
+    <style>
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select, input[type="date"] {
+            margin-bottom: 10px;
+        }
+
+        .error-message {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <label for="travelType">Select Travel Type:</label>
+        <select id="travelType" name="travelType">
+            <option value="general">General</option>
+            <option value="ladies">Ladies</option>
+            <option value="tatkal">Tatkal</option>
+        </select>
+
+        <label for="date">Select Date:</label>
+        <input type="date" id="date" name="date" min="" max="">
+
+        <label for="gender">Select Gender:</label>
+        <select id="gender" name="gender">
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+        </select>
+
+        <div class="error-message" id="dateErrorMessage">Invalid date selected. Please choose tomorrow's date for Tatkal.</div>
+        <div class="error-message" id="genderErrorMessage">Invalid gender selected for ladies category. Please select Female.</div>
+
+        <input type="submit" value="Book Ticket">
+    </form>
+
+    <script>
+        const form = document.getElementById("myForm");
+        const travelType = document.getElementById("travelType");
+        const dateInput = document.getElementById("date");
+        const genderInput = document.getElementById("gender");
+        const dateErrorMessage = document.getElementById("dateErrorMessage");
+        const genderErrorMessage = document.getElementById("genderErrorMessage");
+
+        form.addEventListener("submit", function (e) {
+            if (travelType.value === "tatkal") {
+                const selectedDate = new Date(dateInput.value);
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+
+                if (selectedDate.getTime() !== tomorrow.getTime()) {
+                    e.preventDefault();
+                    dateErrorMessage.style.display = "block";
+                } else {
+                    dateErrorMessage.style.display = "none";
+                }
+            } else {
+                dateErrorMessage.style.display = "none";
+            }
+
+            if (travelType.value === "ladies" && genderInput.value !== "female") {
+                e.preventDefault();
+                genderErrorMessage.style.display = "block";
+            } else {
+                genderErrorMessage.style.display = "none";
+            }
+        });
+
+        travelType.addEventListener("change", function () {
+            if (travelType.value === "tatkal") {
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                dateInput.min = tomorrow.toISOString().split("T")[0];
+                dateInput.max = tomorrow.toISOString().split("T")[0];
+            } else {
+                dateInput.min = "";
+                dateInput.max = "";
+            }
+
+            if (travelType.value === "ladies") {
+                genderInput.value = "female";
+                genderInput.disabled = true;
+            } else {
+                genderInput.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

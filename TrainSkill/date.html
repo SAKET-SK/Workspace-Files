@@ -1,0 +1,118 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Date Selection Form</title>
+</head>
+<body>
+    <h2>Select a Date within the Last Two Months</h2>
+    <form id="dateForm">
+        <label for="selectedDate">Select a Date:</label>
+        <input type="date" id="selectedDate" name="selectedDate" required>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        // Function to set the minimum date two months ago from today
+        function setMinDate() {
+            var today = new Date();
+            var minDate = new Date(today.getFullYear(), today.getMonth() - 2, today.getDate());
+            var formattedMinDate = minDate.toISOString().split('T')[0]; // Format to yyyy-mm-dd
+            document.getElementById('selectedDate').setAttribute('min', formattedMinDate);
+        }
+
+        // Call the function when the page loads
+        window.onload = setMinDate;
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Passenger Booking Form</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <form id="formDetail" style="border: 3px solid black; padding: 20px;">
+            <h2 class="text-center">Passenger Booking Details Form</h2>
+            <div class="form-group">
+                <label for="journey_start">Choose your Journey Starting Point:</label>
+                <select class="custom-select" id="journey_start" required>
+                    <option selected disabled>Choose...</option>
+                    <option value="Ahmedabad">Ahmedabad</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Lucknow">Lucknow</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Surat">Surat</option>
+                    <option value="Thane">Thane</option>
+                    <option value="Vadodara">Vadodara</option>
+                    <option value="Varanasi">Varanasi</option>
+                    <option value="Visakhapatnam">Visakhapatnam</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="journey_end">Choose your Journey End Point:</label>
+                <select class="custom-select" id="journey_end" required>
+                    <option selected disabled>Choose...</option>
+                    <option value="Agra">Agra</option>
+                    <option value="Bhopal">Bhopal</option>
+                    <option value="Coimbatore">Coimbatore</option>
+                    <option value="Faridabad">Faridabad</option>
+                    <option value="Ghaziabad">Ghaziabad</option>
+                    <option value="Indore">Indore</option>
+                    <option value="Kanpur">Kanpur</option>
+                    <option value="Ludhiana">Ludhiana</option>
+                    <option value="Nagpur">Nagpur</option>
+                    <option value="Patna">Patna</option>
+                    <option value="Rajkot">Rajkot</option>
+                    <option value="Srinagar">Srinagar</option>
+                    <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                    <option value="Udaipur">Udaipur</option>
+                    <option value="Vijayawada">Vijayawada</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" class="form-control" id="Name" name="name" placeholder="Please enter your full name..." required>
+            </div>
+            <div class="form-group">
+                <label for="date">Journey Date:</label>
+                <input type="date" class="form-control" id="Date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select class="custom-select" id="gender" required>
+                    <option selected disabled>Choose...</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="text" class="form-control" id="Age" name="age" placeholder="Please enter your age..." required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="text" class="form-control" id="Phone" name="phone" pattern="[0-9]{10}" placeholder="Please enter your phone number..." required>
+            </div>
+            <div class="text-center">
+                <button type="button" class="btn btn-success" id="customerFormButton" onclick="formValue();">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
