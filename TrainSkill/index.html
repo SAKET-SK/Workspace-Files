@@ -1,0 +1,173 @@
+<html>
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <!-- <script src="script.js"></script> -->
+  </head>
+  <body>
+    <form action="" id="formDetail" style="padding: 10px; margin: 10px auto; border: 3px solid black; width: 500px;">
+      <h2 style="text-align: center;">Passenger Booking Details Form</h2>
+      <br/>
+      <form class="form-inline">
+        <label for="journey_start" class="my-1 mr-2" for="inlineFormCustomSelectPref">Choose your Journey Starting Point:</label>
+        <select class="custom-select my-1 mr-sm-2" id="journey_start">
+          <option selected disabled="disabled">Choose...</option>
+          <option value="Ahmedabad">Ahmedabad</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Chennai">Chennai</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Jaipur">Jaipur</option>
+          <option value="Kolkata">Kolkata</option>
+          <option value="Lucknow">Lucknow</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Pune">Pune</option>
+          <option value="Surat">Surat</option>
+          <option value="Thane">Thane</option>
+          <option value="Vadodara">Vadodara</option>
+          <option value="Varanasi">Varanasi</option>
+          <option value="Visakhapatnam">Visakhapatnam</option>
+        </select>
+      <br/>
+      <br/>
+      <label for="journey_end" class="my-1 mr-2" for="inlineFormCustomSelectPref">Choose your Journey End Point:</label>
+        <select class="custom-select my-1 mr-sm-2" id="journey_end">
+          <option selected disabled="disabled">Choose...</option>
+          <option value="Agra">Agra</option>
+          <option value="Bhopal">Bhopal</option>
+          <option value="Coimbatore">Coimbatore</option>
+          <option value="Faridabad">Faridabad</option>
+          <option value="Ghaziabad">Ghaziabad</option>
+          <option value="Indore">Indore</option>
+          <option value="Kanpur">Kanpur</option>
+          <option value="Ludhiana">Ludhiana</option>
+          <option value="Nagpur">Nagpur</option>
+          <option value="Patna">Patna</option>
+          <option value="Rajkot">Rajkot</option>
+          <option value="Srinagar">Srinagar</option>
+          <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+          <option value="Udaipur">Udaipur</option>
+          <option value="Vijayawada">Vijayawada</option>
+        </select>
+      <br/>
+      <br/>
+      <label for="name">Full Name: </label>
+      <br>
+      <input style="width: 70%" required class="form-control" type="text" id="Name" name="name" placeholder="Please enter your full name...">
+      <br>
+      <br>
+      <label for="journey_type" class="my-1 mr-2" for="inlineFormCustomSelectPref">Select your Journey Quota</label>
+      <select class="custom-select my-1 mr-sm-2" id="journey_type">
+        <option selected disabled="disabled">Choose...</option>
+        <option value="Tatkal">Tatkal</option>
+        <option value="Ladies">Ladies</option>
+        <option value="General">General</option>
+      </select>
+      <br>
+      <label for="name">Journey Date: </label>
+      <br>
+      <input style="width: 70%" required class="form-control" type="date" id="Date" name="date">
+      <br>
+      <br>
+      <label for="gender">Gender: </label>
+      <br/>
+      <label for="journey_end" class="my-1 mr-2" for="inlineFormCustomSelectPref">Enter your Gender</label>
+        <select class="custom-select my-1 mr-sm-2" id="gender">
+          <option selected disabled="disabled">Choose...</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Others">Others</option>
+        </select>
+      <br>
+      <br>
+      <label for="age">Age: </label>
+      <br>
+      <input style="width: 70%" required class="form-control" type="text" id="Age" name="age" placeholder="Please enter your age...">
+      <br>
+      <br>
+      <label for="phone">Phone Number: </label>
+      <br>
+      <input style="width: 70%" required class="form-control" type="text" id="Phone" name="phone" pattern="[0-9]{10}" placeholder="Please enter your phone number...">
+      <br>
+      <br>
+      <div class="error-message" id="dateErrorMessage">Invalid date selected. Please choose tomorrow's date for Tatkal.</div>
+      <div class="error-message" id="genderErrorMessage">Invalid gender selected for ladies category. Please select Female.</div>
+      <div class="submitButton" style="display: flex; justify-content: center; align-items: center; height: 50px;">
+        <button type="button" class="btn btn-success"  id="customerFormButton" onclick="formValue();">Book Ticket</button>
+      </div>
+    </form>
+  </body>
+  <script>
+  console.log('Passenger Details');
+  function formValue(){
+    const form = document.getElementById("formDetail");
+
+    const dateErrorMessage = document.getElementById("dateErrorMessage");
+    const genderErrorMessage = document.getElementById("genderErrorMessage");
+
+    const journey_type = document.getElementById("journey_type");
+    const dateInput = document.getElementById("Date");
+    const genderInput = document.getElementById("gender");
+
+    form.addEventListener("submit", function (e) {
+            if (journey_type.value === "tatkal") {
+                const selectedDate = new Date(dateInput.value);
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+
+                if (selectedDate.getTime() !== tomorrow.getTime()) {
+                    e.preventDefault();
+                    dateErrorMessage.style.display = "block";
+                } else {
+                    dateErrorMessage.style.display = "none";
+                }
+            } else {
+                dateErrorMessage.style.display = "none";
+            }
+
+            if (journey_type.value === "ladies" && genderInput.value !== "female") {
+                e.preventDefault();
+                genderErrorMessage.style.display = "block";
+            } else {
+                genderErrorMessage.style.display = "none";
+            }
+        });
+
+        journey_type.addEventListener("change", function () {
+            if (journey_type.value === "tatkal") {
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                dateInput.min = tomorrow.toISOString().split("T")[0];
+                dateInput.max = tomorrow.toISOString().split("T")[0];
+            } else {
+                dateInput.min = "";
+                dateInput.max = "";
+            }
+
+            if (journey_type.value === "ladies") {
+                genderInput.value = "female";
+                genderInput.disabled = true;
+            } else {
+                genderInput.disabled = false;
+            }
+        });
+
+      // console.log('Catcher Function is running');
+      var fname = document.getElementById("Name").value;
+      console.log(fname);
+      var journey_source = document.getElementById("journey_start").value;
+      console.log(journey_source);
+      var journey_dest = document.getElementById("journey_end").value;
+      console.log(journey_dest);
+      var journey_date = document.getElementById("Date").value;
+      console.log(journey_date);
+      var passenger_gender = document.getElementById("gender").value;
+      console.log(passenger_gender);
+      var passenger_age = document.getElementById("Age").value;
+      console.log(passenger_age);
+      var passenger_phone = document.getElementById("Phone").value;
+      console.log(passenger_phone);
+  }
+  </script>
+</html>
+
